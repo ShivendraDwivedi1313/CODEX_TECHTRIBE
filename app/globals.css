@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+/* ─── Light Theme (default) ─────────────────────────────── */
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --color-surface: #f9fafb;
+  --color-card: #ffffff;
+  --color-card-hover: #ffffff;
+  --color-border: #f3f4f6;
+  --color-primary: #111827;
+  --color-secondary: #6b7280;
+  --color-muted: #9ca3af;
+  --color-skeleton: #f3f4f6;
+  --color-input-bg: #f9fafb;
+}
+
+/* ─── Dark Theme ────────────────────────────────────────── */
+.dark {
+  --color-surface: #0f172a;
+  --color-card: #1e293b;
+  --color-card-hover: #334155;
+  --color-border: #334155;
+  --color-primary: #f1f5f9;
+  --color-secondary: #94a3b8;
+  --color-muted: #64748b;
+  --color-skeleton: #334155;
+  --color-input-bg: #1e293b;
+}
+
+/* ─── Custom utility classes using CSS variables ────────── */
+@layer utilities {
+  .bg-surface { background-color: var(--color-surface); }
+  .bg-card { background-color: var(--color-card); }
+  .bg-card-hover { background-color: var(--color-card-hover); }
+  .bg-skeleton { background-color: var(--color-skeleton); }
+  .bg-input-bg { background-color: var(--color-input-bg); }
+  .bg-border { background-color: var(--color-border); }
+
+  .text-primary { color: var(--color-primary); }
+  .text-secondary { color: var(--color-secondary); }
+  .text-muted { color: var(--color-muted); }
+
+  .border-border { border-color: var(--color-border); }
+  .border-card { border-color: var(--color-card); }
+  .border-surface { border-color: var(--color-surface); }
+
+  .ring-border { --tw-ring-color: var(--color-border); }
+  .ring-offset-card { --tw-ring-offset-color: var(--color-card); }
+
+  .placeholder\:text-muted::placeholder { color: var(--color-muted); }
+
+  .hover\:bg-surface:hover { background-color: var(--color-surface); }
+  .hover\:bg-border:hover { background-color: var(--color-border); }
+  .hover\:text-primary:hover { color: var(--color-primary); }
+  .hover\:text-secondary:hover { color: var(--color-secondary); }
+}
+
+/* ─── Opacity variants for theme colors ─────────────────── */
+@layer utilities {
+  .bg-card\/80 { background-color: color-mix(in srgb, var(--color-card) 80%, transparent); }
+  .bg-card\/70 { background-color: color-mix(in srgb, var(--color-card) 70%, transparent); }
+  .bg-card\/50 { background-color: color-mix(in srgb, var(--color-card) 50%, transparent); }
+  .bg-surface\/50 { background-color: color-mix(in srgb, var(--color-surface) 50%, transparent); }
+  .bg-surface\/30 { background-color: color-mix(in srgb, var(--color-surface) 30%, transparent); }
+  .bg-skeleton\/60 { background-color: color-mix(in srgb, var(--color-skeleton) 60%, transparent); }
+  .bg-skeleton\/50 { background-color: color-mix(in srgb, var(--color-skeleton) 50%, transparent); }
+}
+
+* {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Hide scrollbar but keep scrollability */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Skeleton shimmer animation */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,0.03) 25%,
+    rgba(0,0,0,0.06) 50%,
+    rgba(0,0,0,0.03) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite;
+}
+
+.dark .animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.03) 25%,
+    rgba(255,255,255,0.06) 50%,
+    rgba(255,255,255,0.03) 75%
+  );
+  background-size: 200% 100%;
+}
+
+/* Line clamp utility */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
