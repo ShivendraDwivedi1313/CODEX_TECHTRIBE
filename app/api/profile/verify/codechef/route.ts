@@ -3,7 +3,7 @@ import { prisma } from '@/lib/prisma'
 import { getCurrentUserId } from '@/lib/session'
 import * as cheerio from 'cheerio'
 
-export const maxDuration = 600
+export const maxDuration = 300
 
 // Scrape recent submissions from a CodeChef profile using fetch + cheerio
 async function scrapeSubmissions(cc_username: string): Promise<Array<{ problemCode: string; verdict: string; language: string; resultText: string }>> {

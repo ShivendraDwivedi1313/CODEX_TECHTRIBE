@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { getCurrentUserId } from '@/lib/session'
 
-export const maxDuration = 600 // Allow up to 600 seconds for this route
+export const maxDuration = 300 // Allow up to 300 seconds for this route
 
 export async function POST() {
   try {
